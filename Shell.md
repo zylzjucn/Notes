@@ -47,8 +47,8 @@ ls -a
 Create new direcotries:
 ```
 mkdir [option]
-*mkdir my\ cool\ folder*
-*mkdir 'my cool folder'*
+mkdir my\ cool\ folder
+mkdir 'my cool folder'
 ```
 
 * cp, mv, rm
@@ -78,9 +78,9 @@ Display contents of a file or files:
 ```
 cat [option] [file]
 
-*cat a.cpp* 
-*cat a.cpp b.cpp*
-*cat \*.cpp*
+cat a.cpp
+cat a.cpp b.cpp
+cat \*.cpp
 ```
 
 Create a file:
