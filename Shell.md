@@ -63,10 +63,22 @@ Copy a file recursively:
 ```
 cp -r abc
 ```
-Rename or remove:
+Rename or move:
 ```
 mv
 ```
+Add prefix by batch:
+```
+for filename in *.jpg; do mv "$filename" "prefix_$filename"; done;
+```
+
+rename by batch:
+```
+for filename in *.jpg; do echo mv \"$filename\" \"${filename//_namechangefrom_/_namechangeinto_}\"; done > remane.txt
+for filename in *.jpg; do echo mv \"$filename\" \"${filename//_namechangefrom_/_namechangeinto_}\"; done | /bin/bash
+for filename in *.jpg; do mv "$filename" "${filename//_namechangefrom_/_namechangeinto_}"; done
+```
+
 Remove:
 ```
 rm
