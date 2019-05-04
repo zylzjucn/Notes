@@ -72,6 +72,16 @@ Remove:
 rm
 ```
 
+Remove directory:
+```
+rm -r
+```
+
+Remove directory with no prompt (be careful):
+```
+rm -rf
+```
+
 * cat, less, head, tail
 
 Display contents of a file or files:
