@@ -53,6 +53,8 @@ mkdir 'my cool folder'
 
 * cp, mv, rm
 
+> Hidden files' names start with .
+
 Copy files:
 
 ```
