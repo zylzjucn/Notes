@@ -1,1 +1,1 @@
-![1](resources/Seqeunce_Models1.jpg)
+![1](resource/Seqeunce_Models1.jpg)
