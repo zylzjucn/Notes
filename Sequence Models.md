@@ -1,1 +1,1 @@
-![1](resources/Seqeunce_models1)
+![1](resources/Seqeunce_Models1)
