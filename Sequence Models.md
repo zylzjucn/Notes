@@ -147,3 +147,103 @@ while generating 'was' or 'were', the model needs to remember the far earlier no
 ![Deep RNN](resources/DeepRNN.jpg)
 
 > 3 layers is quite big in RNN. May stack more layers with no horizontal connection
+
+# Word representation
+
+> One-hot vectors can't show the connection between the words(man and woman, apple and orange)
+
+![Word Representation](resources/repre.jpg)
+
+- We can use different features to represent words so that the product between 2 relative words would not be 0(so they are relative). Better than One-hot.
+
+![Word Embedding](resources/3D.jpg)
+
+# Word Embeddings
+
+![Word Embedding](resources/Embedding.jpg)
+
+# Properties of word embeddings
+
+![Properties](resources/property.jpg)
+
+> If "man" is corresponding to "woman", what's "king" for?
+> 
+> The big elements in the subtracted vector(-2) represents the different property(gender). They should have similar subtracted vector
+
+![word vectors](resources/wordvectors.jpg)
+
+> To find a word that has a similar vector. To maximize the similarity function
+
+![Cosine](resources/cosine.jpg)
+
+> Cosine of 2 vectors, a good function
+
+# Embedding matrix
+
+![Embedding Matrix](resources/matrix.jpg)
+
+> In the big embedding matrix(E), different words in a row while different features in a column. 
+> 
+> E * one-hot vector = the word's feature. Same with extract the column directly, which is the actual practice
+> 
+> The goal: **learn E**
+
+# Context/target pairs
+
+![Context](resources/context.jpg)
+
+> skip-gram is to pick up context to figure out the target word.
+
+# Negative Sampling
+
+![Negative](resources/negative.jpg)
+
+> context-target pair? (the goal train to learn)
+>
+> 1: positive example
+> 
+> 0: negative example (word randomly chosen from the dictionary)
+
+![Model](resources/negmodel.jpg)
+
+- Only need to update for k+1 instead of 10000 pairs for each iteration
+
+How to generate negative examples:
+
+![Select](resources/select.jpg)
+
+# GloVe
+
+![GloVe](resources/glove.jpg)
+
+- Simply check the times i and j been in a context(customized) globally
+
+![GloVeModel](resources/glovemodel.jpg)
+
+![Featurization](resources/featurization.jpg)
+
+- The features machine learnt are may not explain by human. The are not the same coordinate system and even not orthogonal
+
+# Sentiment Classification
+
+![Sentiment](resources/sentiment.jpg)
+
+- simply average or sum the features of different words
+
+- did not consider the words' order
+
+![Sentiment Model](resources/sentmodel.jpg)
+
+# Debias word embeddings
+
+![Bias](resources/bias.jpg)
+
+- use for school and job admissions, loan applications, criminal justice system
+
+- want to eliminate this kind of bias
+
+![Bias2](resources/bias2.jpg)
+
+1. Use subtraction average to figure out a cordinate system with bias(x) and non-bias(y)
+2. For the words which should be unbias, project them onto y axis
+3. For the others(should be bias), they should be symmetry to y
