@@ -247,3 +247,71 @@ How to generate negative examples:
 1. Use subtraction average to figure out a cordinate system with bias(x) and non-bias(y)
 2. For the words which should be unbias, project them onto y axis
 3. For the others(should be bias), they should be symmetry to y
+
+# Image captioning
+
+Many to many models:
+
+- translation:
+
+![sequence to sequence](resources/stos.jpg)
+
+- image captioning:
+
+![Catpion](resources/caption.jpg)
+
+# Picking the most likely sentence
+
+**Machine translation** and **language model** is similar. Difference:
+
+![Comparison](resources/translation.jpg)
+
+- Language model starts at vector zeros
+
+- Machine translation starts at a representation from encoding network
+
+So Machine translation is a **conditional language model**:
+
+- Modeling the probability of the output of English translation, conditions on some input French sentence.
+
+Greedy search doesn't work here.
+
+# Beam search
+
+![Beam](resources/beam.jpg)
+
+> Set a beam width(say 3, if 1, it is greedy search)
+> 
+> For each step, find out 3 words combination with highest possibilities out of 10,000 * 3, and save these 3 results to next step.
+
+> beam width bigger: bigger memory space required and slower
+> 
+> beam width smaller: worse result
+> 
+> 3~100. up tp 3000 for research
+
+![Length Normalization](resources/lengthnorm.jpg)
+
+> problem: The product of probabilities could be too small
+
+- solution: Use log()
+
+> problem: Finding max may lead to a shorter result(less word, bigger product or sum)
+
+- solution: Devided by Tx to normalize
+
+> A normalized log likelihood objective
+
+alpha is a hyperparameter to tune, often 0.7
+
+> Unlike exact search algorithms like BFS or DFS, Beam Search runs faster but is not guarenteed to find exact maximum for arg max P(y|x)
+
+# Error analysis in beam search
+
+![Error Analysis](resources/error.jpg)
+
+# Bleu score
+
+![Biagrams](resources/biagrams.jpg)
+
+![Bleu](resources/bleu.jpg)
