@@ -2,5 +2,5 @@
 
 1. Shell
 2. RNN
-3. Image Caption
+3. Sequence Models
 4. iTerm2
