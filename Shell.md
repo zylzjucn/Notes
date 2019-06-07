@@ -1,4 +1,4 @@
-* Special symbols:
+* Special symbols
 
 > -: dash
 > 
@@ -23,7 +23,7 @@
 
 * ls
 
-List directory contents
+List directory contents:
 ```
 ls [options] [file/dir]
 ```
