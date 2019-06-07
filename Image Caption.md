@@ -40,3 +40,35 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 针对问题1，提出了一种自适应性的attention机制，是的模型可以自己决定生成单词的时候是根据先验知识（模板）还是根据图像中区域。整体思路如下：
 
 ![](resources/knowingwhentolook.jpg)
+
+与show and tell最主要不同的在于它attention机制：
+
+![](resources/knowingwhentolook1.jpg)
+
+利用ht而不是ht-1来决定看哪里，同时认为ct是ht的残差结构
+
+[knowing when to look](https://blog.csdn.net/sinat_26253653/article/details/79416234)
+
+> SCA-CNN
+
+之前的工作都基于RNN，而CNN也不可忽略。
+
+文章主要利用卷积层不同通道做attention，同时还利用了spatial attention机制：
+
+![](resources/SCA_CNN.jpg)
+
+![](resources/SCA_CNN1.jpg)
+
+由于卷积层不同通道所代表的信息不一样，比如图1中的cake经过卷积之后，并不是在所有卷积通道中都有响应，而是在特定的通道中出现了。提取出这些特定的通道，然后用spatial attention来处理图2得到最后的特征图。直观的角度来说，选取通道是决定看什么，spatial attention则是决定看哪里。最后得到的X显然比V的特征更具有纯粹性和代表性。
+
+> Neural baby talk 和 bottom-up and top-down (cvpr 2018)
+
+两者的共同点是都是用了object detection， 首先提取出图像中可能的物体，再进行描述生成。
+
+很早以前的做法所获得图像描述往往都是和图像很相关，但是不流畅。而利用深度学习之后，生成的描述变得越来越流畅，但是相关性却大打折扣。
+
+![](resources/neuralbabytalk.jpg)
+
+![](resources/neuralbabytalk1.jpg)
+
+
