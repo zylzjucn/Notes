@@ -4,3 +4,4 @@
 2. RNN
 3. Sequence Models
 4. iTerm2
+5. Git
