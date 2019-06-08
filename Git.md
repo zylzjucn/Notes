@@ -1,0 +1,1 @@
+![](resources/git_status.jpg)
