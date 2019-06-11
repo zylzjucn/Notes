@@ -21,7 +21,7 @@ w为输入的单词序列，y为输出，它们都是独热编码的单词，为
 
 Google团队用Incetion中softmax前一层的数据作为图像编码后的特征，传入LSTM（可能需要乘以特定维度的矩阵来转换维度）。
 
-### 李飞飞: NeuralTalk (2015)
+### 李飞飞: Neural Talk (2015)
 > VGG + RNN
 
 在接下来几年MSCOCO的leader board中，几乎都是这种框架拿第一。它的缺点：
@@ -99,9 +99,17 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 
 由于卷积层不同通道所代表的信息不一样，比如图1中的cake经过卷积之后，并不是在所有卷积通道中都有响应，而是在特定的通道中出现了。提取出这些特定的通道，然后用spatial attention来处理图2得到最后的特征图。直观的角度来说，选取通道是决定看什么，spatial attention则是决定看哪里。最后得到的X显然比V的特征更具有纯粹性和代表性。
 
-### Neural baby talk 和 bottom-up and top-down (cvpr 2018)
+### Neural baby talk
 
-两者的共同点是都是用了object detection， 首先提取出图像中可能的物体，再进行描述生成。
+使用了object detection，首先提取出图像中可能的物体，再进行描述生成。
+
+受到基于句子模板填充的 baby talk 的启发，2018年出现了一种基于模板生成和填槽的image caption方法。其主要思想是将产生句子中的词语分为实体词和非实体词两个词表，句子模板由一个语言模型获得，其词语来自非实体词表。实体词表由目标检测方法直接由图像中获得，再用于填充句子模板中的空槽，形成一个句子。
+
+这种方法开创性的使用神经网络来提取句子模板，从而解决了传统基于模板填充的方法缺乏多样性输入的问题。（不过对于我做的东西，可能不需要这种多样性）
+
+### bottom-up and top-down (cvpr 2018)
+
+同样使用了object detection，首先提取出图像中可能的物体，再进行描述生成。
 
 很早以前的做法所获得图像描述往往都是和图像很相关，但是不流畅。而利用深度学习之后，生成的描述变得越来越流畅，但是相关性却大打折扣。
 
@@ -114,9 +122,31 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 这个有意思，它不仅能将图像特征翻译为文字，还能反过来从文字得到图像特征，此外还顺带提升了性能。
 待学习。
 
-### From Captions to Visual Concepts and Back
+### From Captions to Visual Concepts and Back (2015)
 
 与 show and tell 同时期，都参加了微软的 Image Caption 比赛，两者并列第一。它不属于传统的Encoder-Decoder架构，而是采用了传统的语言建模方式。
+
+### Skeleton-Attribute decoder 解码器 (2017)
+
+这是解码端的改进。它由一个Skel-LSTM和一个Attr-LSTM构成，其中前者使用CNN提取出的图像特征获取一个主干句子，再使用后者作为每一个主干句子的词语获得一系列属性词，再将两部分词语合成最终的caption。
+
+### Learning to Generate Stylised Image Captions Using Unaligned Text (cvpr 2018)
+
+为了获得风格化的image caption结果，这篇文章使用了两个解码器，第一个称为term generator,使用CNN图像特征作为输入，通过GRU获得一系列基本语义对，由词语-属性组成。其后再将term generator获取的基本语义输入language generator，产生最后的输出。其中language generator用双向GRU编码按顺序排列的基本语义，再使用新的GRU进行解码。
+
+这个模型感觉是把之前的句子模板调转，通过实体词之间补充非实体词，来形成完整的句子。
+
+### Stack Caption
+
+主要创新点在于使用一个粗粒度的解码器和多个细粒度的解码器，其中粗粒度解码器接受图像特征作为输入，形成其描述结果。接下来在每一个阶段都有一个细粒度的解码器进行更精细的解码，其输入来自上一阶段解码器的输出结果和图像特征，并使用attention机制，从而使得细粒度解码器在每一阶段对粗粒度产生结果的不同方面进行扩展，最终获得较详细的结果。
+
+这些关于解码器的工作说明在解码段使用层级的或切分的解码思路可以显著提高image caption的效果，这样的解码思路也较为复合人类的思维模式，可解释性较强。
+
+### Convolutional Image Caption (cvpr 2018)
+
+这篇文章的方向完全不同于其它文章，它激进地使用Masked CNN
+
+
 
 ### 复现
 
