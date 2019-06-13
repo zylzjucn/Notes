@@ -19,7 +19,9 @@ w为输入的单词序列，y为输出，它们都是独热编码的单词，为
 ### Google: Show and tell: A Neural Image Caption Generator (2015)
 > Inception + LSTM
 
-Google团队用Incetion中softmax前一层的数据作为图像编码后的特征，传入LSTM（可能需要乘以特定维度的矩阵来转换维度）。
+
+Google团队明确提出了借鉴机器翻译的Encoder-Decoder思路，用Incetion中softmax前一层的数据作为图像编码后的特征，传入LSTM（可能需要乘以特定维度的矩阵来转换维度）。
+只在t = -1 的时候看过一次图片。
 
 ### 李飞飞: Neural Talk (2015)
 > VGG + RNN
@@ -29,7 +31,7 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 2. 只关注了全局特征
 3. 模型在学习到了一种模板后再往里面进行填词
 
-### Show attend and tell (cvpr 2016)
+### Show Attend and Tell (cvpr 2016)
 
 解决了1，2
 之前的show and tell模型将输入序列编译成语义特征hn再解码，但是因为hn的长度限制，会影响长句的翻译精度。而show attend and tell提出了一种attention机制，不再使用统一的语义特征，而让Decoder在输入序列中**自由选取**需要的特征，大大提高了Encoder-Decoder模型性能。它具体李永乐CNN的空间特性，给图片的不同位置都提取一个特征，有了含位置信息的特征，Decoder在解码时拥有在这196个位置特征中选择的能力，这就是attention机制。
@@ -42,7 +44,7 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 
 不再使用全连接层代表图像，而是卷积层a的加权得来的z来代表不同时刻的图像。
 
-### What Value Do Explicit High Level Concept Have in Vision to Language Problems?
+### What Value Do Explicit High Level Concepts Have in Vision to Language Problems?
 
 之前可能存在的问题：
 > - CNN提取出的特征图虽然很适合图像问题，但作为输入直接衔接到翻译问题中合适吗？
@@ -74,6 +76,8 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 实验证明，Vatt(I)代替CNN(I)可以大幅度提升模型效果。
 
 ### knowing when to look
+
+一个老问题是，生成的句子中可能有很多意义不大的介词、虚词等，他们不应该依据图像信息输出。因此这篇文章提出了"visual sentinel"的概念，利用其将图片信息、文本信息做加权组合，再生成caption的每一个单词步骤，都考虑是否利用图片信息，如果“是”则继续做上一部分attention模型，如果“否”，则根据已生成的文本预测下一单词。
 
 针对问题1，提出了一种自适应性的attention机制，是的模型可以自己决定生成单词的时候是根据先验知识（模板）还是根据图像中区域。整体思路如下：
 
@@ -144,7 +148,7 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 
 ### Convolutional Image Caption (cvpr 2018)
 
-这篇文章的方向完全不同于其它文章，它激进地使用Masked CNN
+这篇文章的方向完全不同于其它文章，它激进地使用Masked CNN代替传统RNN作为解码器进行解码。在编码阶段，每一步都将词语和提取的图像特征输入卷积编码器，再使用卷积解码，最后再使用softmax获得词概率
 
 
 
@@ -152,5 +156,16 @@ Google团队用Incetion中softmax前一层的数据作为图像编码后的特�
 
 [Image Caption图像描述原理简介及实现](https://blog.csdn.net/xiaxuesong666/article/details/79176572)
 
+### Attention机制
 
+我们在看一个东西的时候，在某一时刻，我们的目光总会落在某一样而不是眼前所有的东西上，这就是注意力。同样，当我们叙述一件事情时，随着我们讲出每个句子或是单词，当下被讨论的核心内容是变化的。
+因此，可以将attention分为2类：
+> - 空间注意力 Spatial Attention
+> - 时间注意力 Temporal Attention
+
+由于其输入输出分片映射的特点，应用场景至少包含以下领域：
+
+- 机器翻译
+- 语音识别
+- 图像描述
 

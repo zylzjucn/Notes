@@ -315,3 +315,9 @@ alpha is a hyperparameter to tune, often 0.7
 ![Biagrams](resources/biagrams.jpg)
 
 ![Bleu](resources/bleu.jpg)
+
+# Attention Model
+
+![Attention](resources/attention.jpg)
+
+For short sentences, not good. For long sentences, attention can improve the performance. As the human beings, we don't expect the machine to remember all the sentence.
