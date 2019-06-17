@@ -169,3 +169,6 @@ Google团队明确提出了借鉴机器翻译的Encoder-Decoder思路，用Incet
 - 语音识别
 - 图像描述
 
+**当前一步输出St应该对齐哪一步输入，主要取决于前一步输出St−1和这一步输入的encoder结果hj**
+
+<img src="resources/attentionci.jpg" width="70%" height="80%" />
