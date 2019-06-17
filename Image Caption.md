@@ -171,4 +171,50 @@ Google团队明确提出了借鉴机器翻译的Encoder-Decoder思路，用Incet
 
 **当前一步输出St应该对齐哪一步输入，主要取决于前一步输出St−1和这一步输入的encoder结果hj**
 
-<img src="resources/attentionci.jpg" width="60%" height="65%" />
+<img src="resources/attentionci.jpg" width="60%" height="65%"/>
+
+其中，αij表示encoder端第j个词与decoder端的第i个词之间的权值，表示源端第j个词对目标端第i个词的影响程度。
+
+
+<img src="resources/attentionai.jpg" width="70%" height="70%"/>
+
+eij表示一个对齐模型，它有多种计算方式，代表不同的attention模型，最简单且常用的对齐模型是dot product乘积矩阵，即把目标端的输出隐状态ht与源端的输出隐状态矩阵相乘
+
+![](resources/attentionscore.jpg)
+
+
+可以将源端的构成元素开成一系列k-v pair，此时给定目标端的某个元素query，可计算对应的权重系数：
+
+对大多数Attention机制进行抽象，可以得到三个阶段：
+
+![](resources/attentionkv.jpg)
+
+1. 根据query和key计算两者的相似性或者相关性:
+> 可以引入不同的函数和计算机制计算相似性，常见的方法包括：向量点积、向量cosine相似性或者引入额外的神经网络：
+> ![](resources/attentionsim.jpg)
+
+2. 归一化处理:
+> 类似softmax，对第一阶段产生的得分进行数值转换，一方面可以归一化，使得各项和为1；另一方面可以更加突出重要元素的权重
+> ![](resources/attentionsoft.jpg)
+
+3. 根据权重系数对value进行加权求和
+> 第二阶段计算的结果ai即为权重系数，加权求和可得Attention数值：
+> ![](resources/attentionvalue.jpg)
+
+
+- Soft Attention:
+
+> 参数化的，因此可导，可以被嵌入到模型中去，直接训练。梯度可以经过Attention Machanism 模块，反向传播到模型其它部分。
+
+- Hard Attention:
+
+> 是一个随机的过程。它不会选择整个encoder的输出作为其输入，而是依据概率Si来采样源端的隐状态一部分来进行计算，而不是整个encoder的隐状态。为了实现梯度的反向传播，需要采用蒙特卡洛采样的方法来估计模块的梯度。
+
+初次之外，还可以分类为：
+
+- Global Attention 
+- Local Attention
+
+- Self Attention:
+传统的Attention是基于源端和目标端的隐变量计算Attention的，得到的结果是源端的每个词与目标端每个词之间的依赖关系。
+而Self Attention分别在源端和目标端进行计算，仅与source input或者target input自身相关，捕捉两端各自自身的词与词之间的依赖关系。然后再将source端得到的Self Attention加入到目标端得到的Attention中，捕捉两端之间词与词的依赖关系。因此，Self Attention较传统的Attention Machanism效果更好。主要原因是，传统的Attention Machanism忽略了两端内部词与词之间的依赖关系。
