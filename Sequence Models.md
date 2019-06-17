@@ -98,7 +98,7 @@ If meeting a word not in the vocabulary, use \<UNK> to represent.
 
 > The cat, which ... , was full.
 
-> The cans, which ... , were full.
+> The cats, which ... , were full.
 
 while generating 'was' or 'were', the model needs to remember the far earlier nouns, 'cat' and 'cats', which is difficult.
 
