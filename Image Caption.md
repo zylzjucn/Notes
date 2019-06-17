@@ -218,3 +218,5 @@ eij表示一个对齐模型，它有多种计算方式，代表不同的attentio
 - Self Attention:
 传统的Attention是基于源端和目标端的隐变量计算Attention的，得到的结果是源端的每个词与目标端每个词之间的依赖关系。
 而Self Attention分别在源端和目标端进行计算，仅与source input或者target input自身相关，捕捉两端各自自身的词与词之间的依赖关系。然后再将source端得到的Self Attention加入到目标端得到的Attention中，捕捉两端之间词与词的依赖关系。因此，Self Attention较传统的Attention Machanism效果更好。主要原因是，传统的Attention Machanism忽略了两端内部词与词之间的依赖关系。
+
+![](resources/attentionself.jpg)

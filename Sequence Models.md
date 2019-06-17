@@ -130,6 +130,17 @@ while generating 'was' or 'were', the model needs to remember the far earlier no
 
 > The * stands for element multiply
 
+上方的长横线称为细胞状态（cell state），记为C(t)。
+整个结构称为门控结构，包括遗忘门，输入门和输出门三种:
+
+- 遗忘门
+> 控制是否遗忘上一层的隐藏细胞状态
+
+- 输入门
+> 负责处理当前序列位置的输入
+
+- 输出门
+
 # Bidirectional RNN
 
 ![BRNN](resources/BRNN.jpg)
