@@ -220,3 +220,7 @@ Directory size totally:
 ```
 du -hs [directory]
 ```
+
+* Vim
+
+![vim](resources/vim.png)
