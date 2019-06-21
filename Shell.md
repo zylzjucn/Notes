@@ -209,3 +209,9 @@ Count diretroies:
 ```
 ls -lR | grep "^d" | wc -l
 ```
+
+File sizes:
+
+```
+ls -sh [file/dir]
+```
