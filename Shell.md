@@ -215,3 +215,8 @@ File sizes:
 ```
 ls -sh [file/dir]
 ```
+
+Directory size totally:
+```
+du -hs [directory]
+```
