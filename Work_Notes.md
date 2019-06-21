@@ -15,11 +15,12 @@
 
 ### 06.20
 
-> ***根据仓库，配置远程服务器的环境，下载图像描述中文数据集***
+> ***根据仓库，配置远程服务器的环境，下载图像描述中文数据集。上传数据集时服务器空间不够***
 
 查看pip安装的库
 
 > pip3 list
+> 
 > pip3 list | grep tensorflow
 
 进入虚拟环境
@@ -41,3 +42,11 @@ ssh 传输文件
 > scp /path/to/file username@a:/path/to/destination
 > 
 > scp username@b:/path/to/file /path/to/destination
+
+
+### 06.21
+
+> ***解决了服务器空间不够的问题，但只能下载到训练集。验证集和测试集因为AIchallenger.com正在验证身份而卡住***
+
+
+
