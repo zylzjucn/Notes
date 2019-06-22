@@ -3,15 +3,22 @@
 > ***熟悉docker以及tigergraph***
 
 加入镜像
-> docker load ...
+```
+docker load ...
+```
 
 加入ps -a
-> docker run ...
+```
+docker run ...
+```
 
 加入ps
-> docker start
-
-> docker attach \<imagename>
+```
+docker start
+```
+```
+docker attach \<imagename>
+```
 
 ### 06.20
 
@@ -19,29 +26,29 @@
 
 查看pip安装的库
 
-> pip3 list
-> 
-> pip3 list | grep tensorflow
+```pip3 list```
+
+```pip3 list | grep tensorflow```
 
 进入虚拟环境
 
-> source bin/activate
+```source bin/activate```
 
 退出虚拟环境
 
-> deactivate
+```deactivate```
 
 虚拟机环境下一般不需要用到sudo。如果用到sudo，就证明已经在大环境下操作了
 
 启动visdom
 
-> python -m visdom.server
+```python -m visdom.server```
 
 ssh 传输文件
 
-> scp /path/to/file username@a:/path/to/destination
-> 
-> scp username@b:/path/to/file /path/to/destination
+```scp /path/to/file username@a:/path/to/destination```
+
+```scp username@b:/path/to/file /path/to/destination```
 
 
 ### 06.21
@@ -52,7 +59,7 @@ ssh 传输文件
 
 指定GPU运行
 
-> CUDA_VISIBLE_DEVICES=2 python test.py
+```CUDA_VISIBLE_DEVICES=2 python test.py```
 
 or
 
@@ -70,5 +77,5 @@ If we have set up CUDA_VISIBLE_DEVICES. The actuall device will be numbered from
 
 每秒刷新GPU使用情况
 
-> nvidia-smi -l 1
+```nvidia-smi -l 1```
 
