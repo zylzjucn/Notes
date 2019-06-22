@@ -46,7 +46,27 @@ ssh 传输文件
 
 ### 06.21
 
-> ***解决了服务器空间不够的问题，但只能下载到训练集。验证集和测试集因为AIchallenger.com正在验证身份而卡住***
+> ***解决了服务器空间不够的问题，但只能下载到训练集。验证集和测试集因为AIchallenger.com正在验证身份而卡住。成功使用服务器中指定GPU，从训练集图片中提取图片特征***
 
+指定GPU运行
 
+> CUDA_VISIBLE_DEVICES=2 python test.py
+
+or
+
+```
+import os
+os.environ['CUDA_VISIBLE_DEVICES']='2'
+```
+
+```
+import torch as th
+th.cuda.set_device(1)
+```
+
+If we have set up CUDA_VISIBLE_DEVICES. The actuall device will be numbered from zero. (4,5 -> 0,1)
+
+每秒刷新GPU使用情况
+
+> nvidia-smi -l 1
 
