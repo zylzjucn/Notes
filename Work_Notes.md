@@ -102,3 +102,52 @@ nvidia-smi -l 1
 > ***写脚本处理excel的一天，基本完成了要做的东西***
 
 ### 06.25
+
+> ***完善脚本。希望明天可以做回图像描述***
+
+读
+
+```
+df = pd.read_csv(source_file, header = 0)
+```
+
+将dataframe中的数据取出来，应该是编程array
+
+```
+id1 = df['id'].values
+id1name = df['name'].values
+```
+
+在某处插入一列
+
+```
+df1.insert(1, "assets_company", assets_company, True)
+```
+
+填充nan为0，并转换数据类型
+
+```
+df1['col_name'] = df1['col_name'].fillna(0).astype(np.int64)
+```
+
+遍历行，写入
+
+```
+for index, row in df1.iterrows():
+    id = row['assets_company_id']
+    if id in dic1:
+        row['assets_company'] = dic1[id]
+        df1.loc[index, 'assets_company'] = dic1[id]
+```
+
+将0换回nan
+
+```
+df1['col_name'] = df1['col_name'].replace({0:np.nan})
+```
+
+导出
+
+```
+export_csv = df1.to_csv (export_file, index = None, header=True)
+```
