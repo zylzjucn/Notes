@@ -97,3 +97,8 @@ If we have set up CUDA_VISIBLE_DEVICES. The actuall device will be numbered from
 nvidia-smi -l 1
 ```
 
+### 06.24
+
+> ***写脚本处理excel的一天，基本完成了要做的东西***
+
+### 06.25
