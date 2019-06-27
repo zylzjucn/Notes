@@ -151,3 +151,10 @@ df1['col_name'] = df1['col_name'].replace({0:np.nan})
 ```
 export_csv = df1.to_csv (export_file, index = None, header=True)
 ```
+
+### 06.25
+
+> ***这一定是脚本工作的最后一天。果然是，开始学习visdom***
+
+编译型语言，比如C/C++，执行前要先编译。以后每次执行不用编译，就直接用编译文件就好。所以快，不好跨平台。
+解释型语言，比如Java, Python, Ruby，每次执行都翻译。慢，好跨平台。
