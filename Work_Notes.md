@@ -166,3 +166,11 @@ export_csv = df1.to_csv (export_file, index = None, header=True)
 shell路径里面有中文还是不行
 
 from 文件夹.文件名 import class名
+
+### 06.28
+
+> ***训练***
+
+|Time|Model|Epoch|Batch_size|lr|Loss|
+|--|---|----|---|---|----|
+|06.28|ResNet50|160|256|1e-3~1e-5|1.033|
