@@ -161,6 +161,8 @@ export_csv = df1.to_csv (export_file, index = None, header=True)
 
 ### 06.27
 
-> ***研究陈云的代码。慢慢来***
+> ***研究陈云的代码。把训练可视化跑出来了。命令行print出来了loss，visdom里面能看到正在训练以及loss的下降曲线。还可以。改了一些参数，这里的硬件实在是太快了。epoch100的weights拿到***
 
 shell路径里面有中文还是不行
+
+from 文件夹.文件名 import class名
