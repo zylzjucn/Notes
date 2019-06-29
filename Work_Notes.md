@@ -174,3 +174,12 @@ from 文件夹.文件名 import class名
 |Time|Model|Epoch|Batch_size|lr|Loss|
 |--|---|----|---|---|----|
 |06.28|ResNet50|160|256|1e-3~1e-5|1.033|
+
+import fire
+主函数中
+fire.Fire()
+即可使用命令行参数
+
+### 06.29
+
+> ***训练得到了resnt50和resnet102的模型。好像这个代码，不能训练CNN，只能训练RNN。下一步看看结果***
