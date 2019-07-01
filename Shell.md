@@ -150,6 +150,8 @@ grep match_pattern [file]
 grep "match_pattern" [file]
 grep match_pattern file_1 file_2 file_3
 grep -E "[1-9]+"
+
+pip3 list | grep numpy
 ```
 
 Print the searched content only:
