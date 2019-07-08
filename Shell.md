@@ -228,6 +228,16 @@ check storage:
 df -h
 ```
 
+check file modification time:
+```
+stat -c '%y' filename
+```
+
+check file size:
+```
+stat --printf="%s" filename
+```
+
 * Vim
 
 ![vim](resources/vim.png)
