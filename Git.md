@@ -24,6 +24,7 @@ git checkout new_branch
 
 ```
 git pull --set-upstream-to=origin/master new_branch
+git branch --set-upstream-to=origin/master
 ```
 
 将自己本地branch的内容合并到本地master中（需先将更新内容add并commit在自己branch中）（此时已在master branch中）:
