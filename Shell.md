@@ -223,6 +223,11 @@ Directory size totally:
 du -hs [directory]
 ```
 
+check storage:
+```
+df -h
+```
+
 * Vim
 
 ![vim](resources/vim.png)
