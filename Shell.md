@@ -241,3 +241,20 @@ stat --printf="%s" filename
 * Vim
 
 ![vim](resources/vim.png)
+
+batch rename files in a dir:
+
+```
+a=1
+for i in *.jpg; do
+  new=$(printf "%04d.jpg" "$a") # 04 pad to length of 4
+  mv -i -- "$i" "$new"
+  let a=a+1
+done
+```
+
+batch modify suffix:
+
+```
+for f in *.JPEG ; do mv -i "${f}" "${f%.JPEG}.jpg" ; done
+```
