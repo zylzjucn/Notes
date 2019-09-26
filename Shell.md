@@ -19,6 +19,8 @@
 > *: asterisk
 > 
 > \#: pound
+> 
+> &: ampersand
 
 
 * ls
@@ -219,21 +221,25 @@ ls -sh [file/dir]
 ```
 
 Directory size totally:
+
 ```
 du -hs [directory]
 ```
 
 check storage:
+
 ```
 df -h
 ```
 
 check file modification time:
+
 ```
 stat -c '%y' filename
 ```
 
 check file size:
+
 ```
 stat --printf="%s" filename
 ```
