@@ -1,4 +1,4 @@
 rdd:
 Resilient Distributed Dataset
 
-![](resources/en_de.jpg)
+![](resources/PySpark_Cheat_Sheet_Python.pdf)
