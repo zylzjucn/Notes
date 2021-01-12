@@ -17,6 +17,12 @@
 
 Peak Concurrent User / Avg Concurrent User 一般在 2 ~ 9
 
+> 一般数据的估算方法：
+
+DAU ---> MAU
+
+DAU ---> qps ---> peak qps --->
+
 SOA: Service Oriented Architecture 面向服务的架构设计
 
 #### 将大系统拆分为小服务：
